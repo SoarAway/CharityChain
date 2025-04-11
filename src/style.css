@@ -1,6 +1,19 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: 'Tomorrow';
+  src: url('/Tomorrow-MediumItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+h1{ 
+  font-family: 'Tomorrow', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
 .shiny-text {
   color: #b5b5b5a4;
   background: linear-gradient(
@@ -54,6 +67,10 @@ h1 {
   display: flex;
 }
 
+path { 
+  fill: #8B5CF6;
+}
+
 /* Progress Bar */
 .progressBar {
   display: flex;
@@ -63,7 +80,7 @@ h1 {
 
 .donation-card [role="progressbar"] {
   background-color: rgba(209, 213, 219, 0.5);
-  width: 80%;
+  width: 85%;
 }
 
 .donation-card [role="progressbar"] > div {

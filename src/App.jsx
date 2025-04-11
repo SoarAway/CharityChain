@@ -3,7 +3,6 @@ import { ethers } from "ethers";
 import { contractABI } from "./abi";
 import TextField from "@mui/material/TextField";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import { create } from '@web3-storage/w3up-client';
 import LandingPage from "./components/LandingPage";
 import DonationCard from "./components/DonationCard";

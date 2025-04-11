@@ -23,14 +23,12 @@ export default function DonationCard({ request, index, handleDonate, showShare =
           <span className="text-lg">{ethers.utils.formatEther(request.requestedAmount)} ETH</span>
         </div>
         {showShare && (
-          <div className="text-center mt-2">
             <ShareIcon 
               onClick={handleShare}
-              className="h-6 w-6 cursor-pointer hover:text-blue-500 transition-colors"
+              className="h-20 w-20 cursor-pointer hover:text-blue-500 transition-colors"
               role="button"
               aria-label="Share"
             />
-          </div>
       )}
       </CardHeader>
       <CardContent>
