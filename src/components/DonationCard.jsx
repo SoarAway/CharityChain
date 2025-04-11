@@ -80,7 +80,7 @@ export default function DonationCard({ request, index, handleDonate, showShare =
         {request.description}
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex gap-2 donationFooter">
         <Input
           type="number"
           placeholder="ETH Amount"

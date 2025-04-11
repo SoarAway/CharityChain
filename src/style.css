@@ -136,6 +136,10 @@ button:hover{
   color: #6b7280; 
 }
 
+.donationFooter > *{ 
+  height: 40px;
+}
+
 /* Request Form */
 .create-post-overlay {
   position: fixed; 
