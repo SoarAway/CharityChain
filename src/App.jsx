@@ -10,6 +10,7 @@ import RequestForm from "./components/RequestForm";
 import Aurora from "@/components/ui/Aurora";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RequestDetails from "./RequestDetails"
+import TrueFocus from '@/components/ui/TrueFocus';
 
 const contractAddress = "0xB743744472c8061B7a9422e13f5c822216c9Df9c";
 
@@ -137,10 +138,16 @@ const CharityApp = () => {
               speed={0.5}
             />
             {/* Search Header */}
-            <div className="p-4 max-w-xl mx-auto">
-              <h1 className="text-5xl font-bold mb-4 text-white text-center">
-                Charity Chain
-              </h1>
+            <div className=" max-w-xl mx-auto">
+            <TrueFocus 
+              sentence="Charity Chain"
+              manualMode={false}
+              blurAmount={5}
+              borderColor="purple"
+              animationDuration={2}
+              pauseBetweenAnimations={1}
+              />
+              <div className="mt-5">
               <TextField
                 fullWidth
                 label="Search"
@@ -165,6 +172,7 @@ const CharityApp = () => {
                   }
                 }}
               />
+              </div>
             </div>
 
             {/* Donation Grid */}
