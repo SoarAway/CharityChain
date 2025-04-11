@@ -18,11 +18,20 @@ This project aims to simplify giving, especially for people who are new to block
 ## Pre-requisites require:
 1. Crypto wallet (e.g. MetaMask)
 2. ETH on a supported network (e.g. Sepolia Testnet)
-3. Internet connection and browser
+3. Node.js
+4. Internet connection and browser
 
 ## Future Enhancements:
 1. AI filtering for scam prevention
 2. Multi-chain support
 3. Currency converter
 
-Run/installation guide:
+## Run/installation guide:
+1. Install Node.js
+2. Install MetaMask crypto wallet and create an account
+3. Enable Sepolia Testnet in MetaMask
+4. Get SepoliaETH from https://cloud.google.com/application/web3/faucet/ethereum/sepolia
+5. Open the folder
+6. Type "npm install" in terminal without the quotation marks to install every dependency
+7. Type "npm run dev" in terminal without the quotation marks to run the web application
+8. Connect the MetaMask wallet when prompted
