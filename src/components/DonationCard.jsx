@@ -1,5 +1,4 @@
 import { ethers } from "ethers";
-import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { Progress } from "@/components/ui/progress";
 import {Card,CardContent,CardDescription,CardHeader,CardTitle} from "@/components/ui/card";
 
@@ -23,14 +22,11 @@ export default function DonationCard({ request, index, handleDonate }) {
             alt={request.title}
             className="w-full h-40 object-cover rounded"
           />
-        <div className="space-y-1">
-          <progress 
-            className="w-full h-3 rounded bg-gray-200 dark:bg-gray-700"
-            value={progress}
-            max="100"
-          />
-          <span className="text-sm">{progress.toFixed(2)}% </span>
+        <div className="space-y-1 mb-3 progressBar">
+          <Progress value={progress}/>
+          <div className= 'text-muted-foreground text-right mt-1'>{progress} %</div>
         </div>
+        <div><p className="text-sm text-white line-clamp-2 overflow-y-auto">{request.description}</p></div>
       </div>
       <div className="flex gap-2">
         <input

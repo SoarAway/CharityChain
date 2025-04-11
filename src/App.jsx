@@ -3,6 +3,7 @@ import { ethers } from "ethers";
 import { contractABI } from "./abi";
 import TextField from "@mui/material/TextField";
 import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 import { create } from '@web3-storage/w3up-client';
 import LandingPage from "./components/LandingPage";
 import DonationCard from "./components/DonationCard";
@@ -134,6 +135,7 @@ const CharityApp = () => {
             <h1 className="text-2xl font-bold mb-4 text-white text-center">
               Charity Chain
             </h1>
+            <Progress value='80'/>
             <TextField
               fullWidth
               label="Search"

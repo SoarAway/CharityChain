@@ -46,6 +46,11 @@ h1 {
   width: 30%;
 }
 
+.progressBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .create-post-overlay {
   position: fixed; 
