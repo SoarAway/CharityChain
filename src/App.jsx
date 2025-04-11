@@ -1,14 +1,12 @@
-// CharityApp.jsx
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { contractABI } from "./abi";
 import TextField from "@mui/material/TextField";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { create } from '@web3-storage/w3up-client';
 import LandingPage from "./components/LandingPage";
 import DonationCard from "./components/DonationCard";
-import CreateRequestForm from "./components/RequestForm";
+import RequestForm from "./components/RequestForm";
 
 const contractAddress = "0xB743744472c8061B7a9422e13f5c822216c9Df9c";
 
@@ -177,7 +175,7 @@ const CharityApp = () => {
 
           {/* Request Form Modal */}
           {isCreatingPost && (
-            <CreateRequestForm
+            <RequestForm
               newRequestTitle={newRequestTitle}
               newRequestDesc={newRequestDesc}
               newRequestAmount={newRequestAmount}
