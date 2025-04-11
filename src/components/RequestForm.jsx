@@ -2,6 +2,8 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Button } from "@/components/ui/button";
 import { AnimatedContent } from "@/components/ui/AnimatedContent";
 import { FileUpload } from "@/components/ui/file-upload";
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
 
 export default function RequestForm({
   newRequestTitle,
@@ -16,6 +18,9 @@ export default function RequestForm({
   onCancel,
   onSubmit
 }) {
+
+  const [uploading, setUploading] = useState(false);
+
   return (
     <div className="create-post-overlay fixed inset-0 bg-black/50 flex items-center justify-center">
       <AnimatedContent
@@ -38,18 +43,28 @@ export default function RequestForm({
             />
             
             <FileUpload
-              onSelect={async (files) => {
+              onChange={async (files) => {
                 if (files.length > 0 && w3client) {
                   try {
+                    setUploading(true); // Start animation
                     const cid = await w3client.uploadFile(files[0]);
                     setCid(cid.toString());
                   } catch (error) {
                     console.error("Upload failed:", error);
                     alert("File upload failed");
+                  } finally {
+                    setUploading(false); // Stop animation
                   }
                 }
               }}
             />
+
+            {uploading && (
+              <div className="flex items-center gap-2 mt-2 text-sm text-gray-400">
+                <Loader2 className="animate-spin w-4 h-4" />
+                Uploading file to IPFS...
+              </div>
+            )}
             
             {cid && (
               <p className="text-sm break-all">

@@ -5,18 +5,32 @@ import SpotlightCard from "@/components/ui/SpotlightCard";
 import {Input} from "@/components/ui/Input";
 import {Card,CardContent,CardHeader} from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
 
 export default function DonationCard({ request, index, handleDonate, showShare = false }) {
   const progress = request.requestedAmount.gt(0)
     ? request.receivedAmount.mul(100).div(request.requestedAmount).toNumber()
     : 0;
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [showDialog, setShowDialog] = useState(false);
 
   const handleShare = () => {
     const link = `${window.location.origin}/request/${index}`;
     navigator.clipboard.writeText(link);
-    alert("Link copied to clipboard!");
+    setShowDialog(true); // show the alert dialog
   };
 
   return (
@@ -35,6 +49,19 @@ export default function DonationCard({ request, index, handleDonate, showShare =
               aria-label="Share"
             />
       )}
+      <AlertDialog open={showDialog} onOpenChange={setShowDialog}>
+        <AlertDialogContent className="bg-[#141212]">
+          <AlertDialogHeader>
+            <AlertDialogTitle>Link Copied!</AlertDialogTitle>
+            <AlertDialogDescription>
+              You can now share the donation request with others.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction onClick={() => setShowDialog(false)}>OK</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
       </CardHeader>
       <CardContent>
         <div className="space-y-2">
