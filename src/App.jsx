@@ -172,7 +172,7 @@ const CharityApp = () => {
               {requests
                 .map((r, i) => ({ request: r, index: i })) // preserve original index
                 .filter(({ request }) => !request.fulfilled) // filter out fulfilled ones
-                .filter(({ request }) => inputText ? request.description.toLowerCase().includes(inputText) : true) // search filter
+                .filter(({ request }) => inputText ? request.title.toLowerCase().includes(inputText) : true) // search filter
                 .map(({ request, index }) => (
                   <DonationCard
                     key={index}

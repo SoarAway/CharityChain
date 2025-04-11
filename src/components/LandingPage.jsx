@@ -16,13 +16,14 @@ export default function LandingPage({ totalDonated, goToHome }) {
             "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]"
           )}/>
           <div className="relative z-10 flex flex-col items-center space-y-4">
-            <GradientText
-              colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-              animationSpeed={5}
-              showBorder={false}
-            >
+            <h1 className="text-6xl pb-2.5">Charity Chain</h1>
               <div className="flex flex-col items-center space-y-1">
-                <div className="flex items-center space-x-1 text-6xl md:text-8xl font-bold">
+                <div className="flex items-baseline space-x-1 md:text-8xl font-bold">
+                <GradientText
+                  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                  animationSpeed={5}
+                  showBorder={false}
+                >
                   <CountUp
                     from={0}
                     to={totalDonated * 1000000}
@@ -31,10 +32,10 @@ export default function LandingPage({ totalDonated, goToHome }) {
                     duration={1}
                     className="count-up-text"
                   />
-                  <span> Gwei funded</span>
+                  </GradientText>
+                  <span className="ml-2 text-3xl">Gwei funded</span>
                 </div>
               </div>
-            </GradientText>
             <Button variant="outline" className="mt-10" onClick={goToHome}>
               Donate now
             </Button>
