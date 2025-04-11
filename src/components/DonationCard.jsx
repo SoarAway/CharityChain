@@ -1,7 +1,8 @@
 import { ethers } from "ethers";
 import { Progress } from "@/components/ui/progress";
+import { Button } from "@/components/ui/button";
+import ShareIcon from '@/assets/share.svg?react';
 import {Card,CardContent,CardDescription,CardHeader,CardTitle} from "@/components/ui/card";
-import { BackgroundGradient } from "@/components/ui/background-gradient";
 
 export default function DonationCard({ request, index, handleDonate, showShare = false }) {
   const progress = request.requestedAmount.gt(0)
@@ -15,28 +16,35 @@ export default function DonationCard({ request, index, handleDonate, showShare =
   };
 
   return (
-<Card>
-      <CardHeader>
-      <h3 className="text-4xl font-bold">{request.title}</h3>
-      <span className="text-lg">{ethers.utils.formatEther(request.requestedAmount)} ETH</span>
+    <Card className='donation-card'>
+      <CardHeader className='donation-header'>
+        <div>
+          <h3 className="text-4xl font-bold">{request.title}</h3>
+          <span className="text-lg">{ethers.utils.formatEther(request.requestedAmount)} ETH</span>
+        </div>
+        {showShare && (
+          <div className="text-center mt-2">
+            <ShareIcon 
+              onClick={handleShare}
+              className="h-6 w-6 cursor-pointer hover:text-blue-500 transition-colors"
+              role="button"
+              aria-label="Share"
+            />
+          </div>
+      )}
       </CardHeader>
       <CardContent>
-      <div className="space-y-2">
-        <img
-          src={`https://ipfs.io/ipfs/${request.cid}`}
-          alt={request.title}
-          className="w-full h-40 object-cover rounded"
-        />
-        <div className="space-y-1">
-          <progress
-            className="w-full h-3 rounded bg-gray-200 dark:bg-gray-700"
-            value={progress}
-            max="100"
+        <div className="space-y-2">
+          <img
+            src={`https://ipfs.io/ipfs/${request.cid}`}
+            alt={request.title}
+            className="w-full h-40 object-cover rounded"
           />
-          <span className="text-sm">{progress.toFixed(2)}% Funded</span>
         </div>
-        <div><p className="text-sm text-white line-clamp-2 overflow-y-auto">{request.description}</p></div>
-      </div>
+        <div className='mt-3 mb-3 progressBar'>
+          <Progress value={progress} />
+          <div className= 'text-muted-foreground text-right'>{progress} %</div>
+        </div>
 
       <p className="text-sm text-gray-600 dark:text-gray-300">
         {request.description}
@@ -58,17 +66,6 @@ export default function DonationCard({ request, index, handleDonate, showShare =
           Donate
         </button>
       </div>
-
-      {showShare && (
-        <div className="text-center mt-2">
-          <button
-            onClick={handleShare}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-          >
-            Copy Shareable Link
-          </button>
-        </div>
-      )}
       </CardContent>
     </Card>
   );
