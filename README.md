@@ -15,16 +15,16 @@ This project aims to simplify giving, especially for people who are new to block
 4. Transparent donation tracking and progress per request.
 5. IPFS-powered decentralized storage for secure, permanent request files.
 
-## Pre-requisites require:
-1. Crypto wallet (e.g. MetaMask)
-2. ETH on a supported network (e.g. Sepolia Testnet)
-3. Node.js
-4. Internet connection and browser
-
 ## Future Enhancements:
 1. AI filtering for scam prevention
 2. Multi-chain support
 3. Currency converter
+
+## Pre-requisites Required:
+1. Crypto wallet (e.g. MetaMask)
+2. ETH on a supported network (e.g. Sepolia Testnet)
+3. Node.js
+4. Internet connection and browser
 
 ## Run/installation guide:
 1. Install Node.js
