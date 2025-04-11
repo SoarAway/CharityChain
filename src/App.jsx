@@ -147,13 +147,22 @@ const CharityApp = () => {
                 variant="outlined"
                 onChange={(e) => setInputText(e.target.value.toLowerCase())}
                 sx={{
-                  "& .MuiOutlinedInput-root": { 
+                  "& .MuiOutlinedInput-root": {
                     color: "white",
-                    "& fieldset": { borderColor: "white" },
-                    "&:hover fieldset": { borderColor: "#F6CEFC" },
-                    "&.Mui-focused fieldset": { borderColor: "#BF77F6" }
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "white",
+                    },
+                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#BF77F6",
+                    },
+                    "&:hover:not(.Mui-focused) .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#F6CEFC",
+                    }
                   },
-                  "& .MuiInputLabel-root": { color: "white","&.Mui-focused fieldset": { borderColor: "#BF77F6"}}
+                  "& .MuiInputLabel-outlined": {
+                    color: "white",
+                    "&.Mui-focused": { color: "#F6CEFC" }
+                  }
                 }}
               />
             </div>

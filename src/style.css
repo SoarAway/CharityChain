@@ -8,6 +8,16 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'Gidole';
+  src: url('/Gidole-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+body { 
+  font-family: 'Gidole', sans-serif;
+}
+
 h1{ 
   font-family: 'Tomorrow', sans-serif;
   font-style: italic;
@@ -59,7 +69,6 @@ h1{
   width: 400px;
   justify-content: space-between;
   border: 0;
-
 }
 
 .donation-header { 
@@ -71,15 +80,31 @@ h1{
   width: 80%;
 }
 
+.descriptionBox { 
+  min-height: 50px;
+}
+
 /* Search Bar */
 .search {
   width: 30%;
 }
 
-
-
 path { 
   fill: #8B5CF6;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+path:hover { 
+  fill: #FFFFFF;
+  scale: 1.05;
+}
+
+img { 
+  min-height: 250px;
+}
+
+button { 
+  background-color: #8B5CF6;
 }
 
 /* Progress Bar */
