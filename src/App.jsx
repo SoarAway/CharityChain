@@ -10,6 +10,7 @@ import RequestForm from "./components/RequestForm";
 import Aurora from "@/components/ui/Aurora";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RequestDetails from "./RequestDetails"
+import AddIcon from '@/assets/add.svg?react';
 
 const contractAddress = "0xB743744472c8061B7a9422e13f5c822216c9Df9c";
 
@@ -188,12 +189,16 @@ const CharityApp = () => {
             <Button
               onClick={() => setIsCreatingPost(true)}
               variant="outline"
-              className="fixed bottom-10 right-10 bg-purple-500 text-white hover:bg-purple-600 flex items-center overflow-hidden transition-all duration-300 ease-in-out w-12 hover:w-56 h-12 rounded-xl group px-4"
+              className="fixed bottom-10 right-10 bg-purple-500 text-white hover:bg-purple-600 flex items-center overflow-hidden transition-all duration-300 ease-in-out w-12 hover:w-56 h-12 rounded-xl group px-4 justify-center hover:justify-start"
             >
+              {/* Default state "+" */}
+              <span className="text-xl group-hover:hidden">+</span>
+
+              {/* Hover state SVG + Text */}
+              <div className="hidden group-hover:flex items-center gap-2">
               <span className="text-xl">+</span>
-              <span className="ml-2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Request for donation
-              </span>
+                <span className="whitespace-nowrap">Request for donation</span>
+              </div>
             </Button>
 
 

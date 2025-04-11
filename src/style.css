@@ -23,8 +23,8 @@ h1{
   font-style: italic;
   font-weight: 400;
   margin: 10px;
-  /* font-size: 40px; */
   margin-top: -50px;
+  margin-bottom : 30px;
 }
 
 .shiny-text {
@@ -100,6 +100,7 @@ path:hover {
   scale: 1.05;
 }
 
+
 img { 
   min-height: 250px;
   min-width: 400px;
@@ -108,13 +109,13 @@ img {
 button { 
   background-color: #8B5CF6;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
 
 button:hover{ 
   background-color: #060606;
   border: 1px solid #8B5CF6;
 }
-
 /* Progress Bar */
 .progressBar {
   display: flex;
