@@ -3,7 +3,8 @@ import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import ShareIcon from '@/assets/share.svg?react';
 import SpotlightCard from "@/components/ui/SpotlightCard";
-import {Card,CardContent,CardDescription,CardHeader,CardTitle} from "@/components/ui/card";
+import {Input} from "@/components/ui/Input";
+import {Card,CardContent,CardHeader,CardTitle} from "@/components/ui/card";
 
 export default function DonationCard({ request, index, handleDonate, showShare = false }) {
   const progress = request.requestedAmount.gt(0)
@@ -17,7 +18,7 @@ export default function DonationCard({ request, index, handleDonate, showShare =
   };
 
   return (
-    <SpotlightCard>
+    <SpotlightCard >
     <Card className='donation-card'>
       <CardHeader className='donation-header'>
         <div>
@@ -27,7 +28,7 @@ export default function DonationCard({ request, index, handleDonate, showShare =
         {showShare && (
             <ShareIcon 
               onClick={handleShare}
-              className="h-15 w-15 cursor-pointer hover:text-blue-500 transition-colors"
+              className="h-10 w-10 cursor-pointer hover:text-blue-500 transition-colors"
               role="button"
               aria-label="Share"
             />
@@ -46,12 +47,12 @@ export default function DonationCard({ request, index, handleDonate, showShare =
           <div className= 'text-muted-foreground text-right'>{progress} %</div>
         </div>
 
-      <p className="text-sm text-gray-600 dark:text-gray-300">
+      <div className="descriptionBox mb-4 text-sm text-gray-600 dark:text-gray-300">
         {request.description}
-      </p>
+      </div>
 
       <div className="flex gap-2">
-        <input
+        <Input
           type="number"
           placeholder="ETH Amount"
           id={`donate-${index}`}
@@ -61,7 +62,7 @@ export default function DonationCard({ request, index, handleDonate, showShare =
           onClick={() =>
             handleDonate(index, document.getElementById(`donate-${index}`).value)
           }
-          className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
+          className="px-4 py-2 text-white rounded"
         >
           Donate
         </button>
