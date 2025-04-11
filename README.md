@@ -25,6 +25,7 @@ This project aims to simplify giving, especially for people who are new to block
 2. ETH on a supported network (e.g., Sepolia Testnet)
 3. Node.js
 4. Internet connection and browser
+5. Integrated IPFS via web3.storage, hence it requires verification from our email
 
 ## Run/installation guide:
 1. Install Node.js from https://nodejs.org/en/download
