@@ -24,5 +24,6 @@ Future Enhancements:
 1. AI filtering for scam prevention
 2. Multi-chain support
 3. Currency converter
+4. Share function for users to share their requests
 
 Run/installation guide:
