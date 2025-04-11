@@ -1,10 +1,9 @@
 import { ethers } from "ethers";
 import { Progress } from "@/components/ui/progress";
-import { Button } from "@/components/ui/button";
 import ShareIcon from '@/assets/share.svg?react';
 import SpotlightCard from "@/components/ui/SpotlightCard";
 import {Input} from "@/components/ui/Input";
-import {Card,CardContent,CardHeader,CardTitle} from "@/components/ui/card";
+import {Card,CardContent,CardHeader} from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 
 export default function DonationCard({ request, index, handleDonate, showShare = false }) {

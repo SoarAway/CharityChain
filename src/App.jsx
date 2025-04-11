@@ -10,7 +10,6 @@ import RequestForm from "./components/RequestForm";
 import Aurora from "@/components/ui/Aurora";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RequestDetails from "./RequestDetails"
-import AddIcon from '@/assets/add.svg?react';
 
 const contractAddress = "0xB743744472c8061B7a9422e13f5c822216c9Df9c";
 
