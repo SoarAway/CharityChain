@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import DonationCard from "./components/DonationCard";
@@ -12,6 +12,7 @@ export default function RequestDetails() {
   const [request, setRequest] = useState(null);
   const [loading, setLoading] = useState(true);
   const [contract, setContract] = useState(null);
+  const navigate = useNavigate();
 
   // Initialize contract from MetaMask
   useEffect(() => {
@@ -90,7 +91,7 @@ export default function RequestDetails() {
       amplitude={1.0}
       speed={0.5}
     />
-    <h1 className="text-2xl font-bold mb-4 text-white text-center">
+    <h1 className="text-2xl font-bold mb-4 text-white text-center cursor-pointer" onClick={() => navigate("/")}>
       Charity Chain
     </h1>
       <DonationCard request={request} index={id} handleDonate={handleDonate} showShare={true} />
