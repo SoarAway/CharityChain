@@ -143,7 +143,7 @@ const CharityApp = () => {
               sentence="Charity Chain"
               manualMode={false}
               blurAmount={5}
-              borderColor="purple"
+              borderColor="#FF94B4"
               animationDuration={2}
               pauseBetweenAnimations={1}
               />
