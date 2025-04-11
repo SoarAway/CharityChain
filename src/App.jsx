@@ -7,6 +7,8 @@ import { create } from '@web3-storage/w3up-client';
 import LandingPage from "./components/LandingPage";
 import DonationCard from "./components/DonationCard";
 import RequestForm from "./components/RequestForm";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RequestDetails from "./RequestDetails"
 
 const contractAddress = "0xB743744472c8061B7a9422e13f5c822216c9Df9c";
 
@@ -121,77 +123,87 @@ const CharityApp = () => {
     .filter(r => !r.fulfilled);
 
   return (
-    <>
-      {isLandingPage ? (
-        <LandingPage 
-          totalDonated={totalDonated} 
-          goToHome={goToHome}
-        />
-      ) : (
-        <div className="relative min-h-screen">
-          {/* Search Header */}
-          <div className="p-4 max-w-xl mx-auto">
-            <h1 className="text-2xl font-bold mb-4 text-white text-center">
-              Charity Chain
-            </h1>
-            <TextField
-              fullWidth
-              label="Search"
-              variant="outlined"
-              onChange={(e) => setInputText(e.target.value.toLowerCase())}
-              sx={{
-                "& .MuiOutlinedInput-root": { 
-                  color: "white",
-                  "& fieldset": { borderColor: "white" },
-                  "&:hover fieldset": { borderColor: "#F6CEFC" },
-                  "&.Mui-focused fieldset": { borderColor: "#BF77F6" }
-                },
-                "& .MuiInputLabel-root": { color: "white" }
-              }}
-            />
-          </div>
-
-          {/* Donation Grid */}
-          <div className="flex flex-wrap justify-center px-6 py-6 gap-4">
-            {filteredRequests.map((request, index) => (
-              <DonationCard
-                key={index}
-                request={request}
-                index={index}
-                handleDonate={handleDonate}
+    <Router>
+  <Routes>
+    <Route
+      path="/"
+      element={
+        isLandingPage ? (
+          <LandingPage 
+            totalDonated={totalDonated} 
+            goToHome={goToHome}
+          />
+        ) : (
+          <div className="relative min-h-screen">
+            {/* Search Header */}
+            <div className="p-4 max-w-xl mx-auto">
+              <h1 className="text-2xl font-bold mb-4 text-white text-center">
+                Charity Chain
+              </h1>
+              <TextField
+                fullWidth
+                label="Search"
+                variant="outlined"
+                onChange={(e) => setInputText(e.target.value.toLowerCase())}
+                sx={{
+                  "& .MuiOutlinedInput-root": { 
+                    color: "white",
+                    "& fieldset": { borderColor: "white" },
+                    "&:hover fieldset": { borderColor: "#F6CEFC" },
+                    "&.Mui-focused fieldset": { borderColor: "#BF77F6" }
+                  },
+                  "& .MuiInputLabel-root": { color: "white" }
+                }}
               />
-            ))}
+            </div>
+
+            {/* Donation Grid */}
+            <div className="flex flex-wrap justify-center px-6 py-6 gap-4">
+              {filteredRequests.map((request, index) => (
+                <DonationCard
+                  key={index}
+                  request={request}
+                  index={index}
+                  handleDonate={handleDonate}
+                  showShare={true}
+                />
+              ))}
+            </div>
+
+            {/* Create Request Button */}
+            <Button
+              onClick={() => setIsCreatingPost(true)}
+              variant="outline"
+              size="icon"
+              className="fixed bottom-10 right-10 bg-black text-white hover:bg-white hover:text-black"
+            >
+              +
+            </Button>
+
+            {/* Request Form Modal */}
+            {isCreatingPost && (
+              <RequestForm
+                newRequestTitle={newRequestTitle}
+                newRequestDesc={newRequestDesc}
+                newRequestAmount={newRequestAmount}
+                cid={cid}
+                w3client={w3client}
+                setNewRequestTitle={setNewRequestTitle}
+                setNewRequestDesc={setNewRequestDesc}
+                setNewRequestAmount={setNewRequestAmount}
+                setCid={setCid}
+                onCancel={() => setIsCreatingPost(false)}
+                onSubmit={handleRequestFunds}
+              />
+            )}
           </div>
+        )
+      }
+    />
+    <Route path="/request/:id" element={<RequestDetails />} />
+  </Routes>
+</Router>
 
-          {/* Create Request Button */}
-          <Button
-            onClick={() => setIsCreatingPost(true)}
-            variant="outline"
-            size="icon"
-            className="fixed bottom-10 right-10 bg-black text-white hover:bg-white hover:text-black"
-          >
-            +
-          </Button>
-
-          {/* Request Form Modal */}
-          {isCreatingPost && (
-            <RequestForm
-              newRequestTitle={newRequestTitle}
-              newRequestDesc={newRequestDesc}
-              newRequestAmount={newRequestAmount}
-              cid={cid}
-              w3client={w3client}
-              setNewRequestTitle={setNewRequestTitle}
-              setNewRequestDesc={setNewRequestDesc}
-              setNewRequestAmount={setNewRequestAmount}
-              setCid={setCid}
-              onCancel={() => setIsCreatingPost(false)}
-              onSubmit={handleRequestFunds}
-            />
-          )}
-        </div>
-      )}
-    </>
   );
 };
 
