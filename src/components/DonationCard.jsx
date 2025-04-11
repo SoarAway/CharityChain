@@ -5,11 +5,14 @@ import ShareIcon from '@/assets/share.svg?react';
 import SpotlightCard from "@/components/ui/SpotlightCard";
 import {Input} from "@/components/ui/Input";
 import {Card,CardContent,CardHeader,CardTitle} from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 export default function DonationCard({ request, index, handleDonate, showShare = false }) {
   const progress = request.requestedAmount.gt(0)
     ? request.receivedAmount.mul(100).div(request.requestedAmount).toNumber()
     : 0;
+
+    const navigate = useNavigate();
 
   const handleShare = () => {
     const link = `${window.location.origin}/request/${index}`;
@@ -18,8 +21,8 @@ export default function DonationCard({ request, index, handleDonate, showShare =
   };
 
   return (
-    <SpotlightCard >
-    <Card className='donation-card'>
+    <SpotlightCard>
+    <Card className='donation-card' onClick={() => navigate(`/request/${index}`)}>
       <CardHeader className='donation-header'>
         <div>
           <h3 className="text-4xl font-bold">{request.title}</h3>
