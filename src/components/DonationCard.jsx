@@ -1,5 +1,8 @@
 import { ethers } from "ethers";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
+import { Progress } from "@/components/ui/progress";
+import {Card,CardContent,CardDescription,CardHeader,CardTitle} from "@/components/ui/card";
+
 
 export default function DonationCard({ request, index, handleDonate }) {
   const progress = request.requestedAmount.gt(0) 
@@ -7,26 +10,28 @@ export default function DonationCard({ request, index, handleDonate }) {
     : 0;
 
   return (
-    <BackgroundGradient className="rounded-[22px] h-[360px] sm:p-6 bg-white dark:bg-zinc-900 flex flex-col justify-between">
+    <Card>
+      <CardHeader>
       <h3 className="text-4xl font-bold">{request.title}</h3>
       <span className="text-lg">{ethers.utils.formatEther(request.requestedAmount)} ETH</span>
-      
-      <div className="space-y-2">
-        <img
-          src={`https://ipfs.io/ipfs/${request.cid}`}
-          alt={request.title}
-          className="w-full h-40 object-cover rounded"
-        />
+      </CardHeader>
+
+      <CardContent>
+        <div className="space-y-2">
+          <img
+            src={`https://ipfs.io/ipfs/${request.cid}`}
+            alt={request.title}
+            className="w-full h-40 object-cover rounded"
+          />
         <div className="space-y-1">
           <progress 
             className="w-full h-3 rounded bg-gray-200 dark:bg-gray-700"
             value={progress}
             max="100"
           />
-          <span className="text-sm">{progress.toFixed(2)}% Funded</span>
+          <span className="text-sm">{progress.toFixed(2)}% </span>
         </div>
       </div>
-
       <div className="flex gap-2">
         <input
           type="number"
@@ -41,6 +46,7 @@ export default function DonationCard({ request, index, handleDonate }) {
           Donate
         </button>
       </div>
-    </BackgroundGradient>
+      </CardContent>
+    </Card>
   );
 }
