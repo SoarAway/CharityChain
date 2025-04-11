@@ -1,12 +1,13 @@
-# React + Vite
+# Charity Chain
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A charity website designed to help any person in need with web3 technology. This project supports donation through cryptocurrency and leverages transparency and simplicity, encouraging more donors.
 
-Currently, two official plugins are available:
+Aim: To build a user-friendly website that allows anyone including the elderly with lack of knowledge in technology to make donations online.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Key Features:
+1. Linking with crypto wallets such as MetaMask.
+2. Donation through cryptocurrency with 1 button.
+3. Request for donations instantly.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Pre-requisites require:
+1. Crypto wallet.
