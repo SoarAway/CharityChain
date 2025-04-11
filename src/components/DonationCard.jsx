@@ -1,5 +1,8 @@
 import { ethers } from "ethers";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
+import { Progress } from "@/components/ui/progress";
+import {Card,CardContent,CardDescription,CardHeader,CardTitle} from "@/components/ui/card";
+
 
 export default function DonationCard({ request, index, handleDonate, showShare = false }) {
   const progress = request.requestedAmount.gt(0)
@@ -13,32 +16,28 @@ export default function DonationCard({ request, index, handleDonate, showShare =
   };
 
   return (
-    <BackgroundGradient className="rounded-[22px] h-auto sm:p-6 bg-white dark:bg-zinc-900 flex flex-col justify-between space-y-4">
-      <h3 className="text-2xl font-bold">{request.title}</h3>
-      <span className="text-lg">
-        Goal: {ethers.utils.formatEther(request.requestedAmount)} ETH
-      </span>
+    <Card>
+      <CardHeader>
+      <h3 className="text-4xl font-bold">{request.title}</h3>
+      <span className="text-lg">{ethers.utils.formatEther(request.requestedAmount)} ETH</span>
+      </CardHeader>
 
-      <div className="space-y-2">
-        <img
-          src={`https://ipfs.io/ipfs/${request.cid}`}
-          alt={request.title}
-          className="w-full h-40 object-cover rounded"
-        />
+      <CardContent>
+        <div className="space-y-2">
+          <img
+            src={`https://ipfs.io/ipfs/${request.cid}`}
+            alt={request.title}
+            className="w-full h-40 object-cover rounded"
+          />
         <div className="space-y-1">
           <progress
             className="w-full h-3 rounded bg-gray-200 dark:bg-gray-700"
             value={progress}
             max="100"
           />
-          <span className="text-sm">{progress.toFixed(2)}% Funded</span>
+          <span className="text-sm">{progress.toFixed(2)}% </span>
         </div>
       </div>
-
-      <p className="text-sm text-gray-600 dark:text-gray-300">
-        {request.description}
-      </p>
-
       <div className="flex gap-2">
         <input
           type="number"
@@ -55,17 +54,7 @@ export default function DonationCard({ request, index, handleDonate, showShare =
           Donate
         </button>
       </div>
-
-      {showShare && (
-        <div className="text-center mt-2">
-          <button
-            onClick={handleShare}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-          >
-            Copy Shareable Link
-          </button>
-        </div>
-      )}
-    </BackgroundGradient>
+      </CardContent>
+    </Card>
   );
 }

@@ -17,7 +17,7 @@ export default function RequestForm({
   onSubmit
 }) {
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
+    <div className="create-post-overlay fixed inset-0 bg-black/50 flex items-center justify-center">
       <AnimatedContent
         distance={150}
         direction="vertical"
