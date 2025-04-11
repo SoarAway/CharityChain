@@ -35,8 +35,8 @@ export default function DonationCard({ request, index, handleDonate, showShare =
 
   return (
     <SpotlightCard>
-    <Card className='donation-card' onClick={() => navigate(`/request/${index}`)}>
-      <CardHeader className='donation-header'>
+    <Card className='donation-card'>
+      <CardHeader className='donation-header' onClick={() => navigate(`/request/${index}`)}>
         <div>
           <h3 className="text-4xl font-bold">{request.title}</h3>
           <span className="text-lg">{ethers.utils.formatEther(request.requestedAmount)} ETH</span>
@@ -64,19 +64,19 @@ export default function DonationCard({ request, index, handleDonate, showShare =
       </AlertDialog>
       </CardHeader>
       <CardContent>
-        <div className="space-y-2">
+        <div className="space-y-2" onClick={() => navigate(`/request/${index}`)}>
           <img
             src={`https://ipfs.io/ipfs/${request.cid}`}
             alt={request.title}
             className="w-full h-40 object-cover rounded"
           />
         </div>
-        <div className='mt-3 mb-3 progressBar'>
+        <div className='mt-3 mb-3 progressBar' onClick={() => navigate(`/request/${index}`)}>
           <Progress value={progress} />
           <div className= 'text-muted-foreground text-right'>{progress} %</div>
         </div>
 
-      <div className="descriptionBox mb-4 text-sm text-gray-600 dark:text-gray-300">
+      <div className="descriptionBox mb-4 text-sm text-gray-600 dark:text-gray-300" onClick={() => navigate(`/request/${index}`)}>
         {request.description}
       </div>
 
