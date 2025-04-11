@@ -66,9 +66,10 @@ h1{
 }
 
 .donation-card{
-  width: 400px;
+  min-width: 400px;
   justify-content: space-between;
   border: 0;
+  margin: 0 auto;
 }
 
 .donation-header { 
@@ -95,16 +96,23 @@ path {
 }
 
 path:hover { 
-  fill: #FFFFFF;
+  fill: #cdb9fb;
   scale: 1.05;
 }
 
 img { 
   min-height: 250px;
+  min-width: 400px;
 }
 
 button { 
   background-color: #8B5CF6;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover{ 
+  background-color: #060606;
+  border: 1px solid #8B5CF6;
 }
 
 /* Progress Bar */
