@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import CountUp from "@/components/ui/CountUp";
 import GradientText from "@/components/ui/GradientText";
 import { cn } from "@/lib/utils";
+import Aurora from "@/components/ui/Aurora";
 
 export default function LandingPage({ totalDonated, goToHome }) {
   return (

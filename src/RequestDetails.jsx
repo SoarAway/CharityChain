@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import DonationCard from "./components/DonationCard";
 import { contractABI } from "./abi";
+import Aurora from "@/components/ui/Aurora";
 
 const contractAddress = "0xB743744472c8061B7a9422e13f5c822216c9Df9c";
 
@@ -83,15 +84,17 @@ export default function RequestDetails() {
 
   return (
     <div className="max-w-2xl mx-auto mt-10 px-4">
-      <DonationCard request={request} index={id} handleDonate={handleDonate} />
-      <div className="mt-4 text-center">
-        <button
-          onClick={() => navigator.clipboard.writeText(window.location.href)}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Copy Shareable Link
-        </button>
-      </div>
+    <Aurora
+      colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+      blend={0.5}
+      amplitude={1.0}
+      speed={0.5}
+    />
+    <h1 className="text-2xl font-bold mb-4 text-white text-center">
+      Charity Chain
+    </h1>
+      <DonationCard request={request} index={id} handleDonate={handleDonate} showShare={true} />
+
     </div>
   );
 }

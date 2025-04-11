@@ -2,6 +2,7 @@ import { ethers } from "ethers";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import ShareIcon from '@/assets/share.svg?react';
+import SpotlightCard from "@/components/ui/SpotlightCard";
 import {Card,CardContent,CardDescription,CardHeader,CardTitle} from "@/components/ui/card";
 
 export default function DonationCard({ request, index, handleDonate, showShare = false }) {
@@ -16,6 +17,7 @@ export default function DonationCard({ request, index, handleDonate, showShare =
   };
 
   return (
+    <SpotlightCard>
     <Card className='donation-card'>
       <CardHeader className='donation-header'>
         <div>
@@ -25,7 +27,7 @@ export default function DonationCard({ request, index, handleDonate, showShare =
         {showShare && (
             <ShareIcon 
               onClick={handleShare}
-              className="h-20 w-20 cursor-pointer hover:text-blue-500 transition-colors"
+              className="h-15 w-15 cursor-pointer hover:text-blue-500 transition-colors"
               role="button"
               aria-label="Share"
             />
@@ -66,5 +68,7 @@ export default function DonationCard({ request, index, handleDonate, showShare =
       </div>
       </CardContent>
     </Card>
+    </SpotlightCard>
+
   );
 }

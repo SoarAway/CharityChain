@@ -12,6 +12,9 @@ h1{
   font-family: 'Tomorrow', sans-serif;
   font-style: italic;
   font-weight: 400;
+  margin: 10px;
+  font-size: 40px;
+  margin-top: -50px;
 }
 
 .shiny-text {
@@ -43,7 +46,6 @@ h1{
 }
 
 
-
 .main {
   display: flex;
   height: 100vh;
@@ -53,9 +55,20 @@ h1{
   row-gap: 20px;
 }
 
-h1 {
-  margin: 10px;
-  font-size: 40px;
+.donation-card{
+  width: 400px;
+  justify-content: space-between;
+  border: 0;
+
+}
+
+.donation-header { 
+  display: flex;
+  justify-content: space-between;
+}
+
+.donation-header div { 
+  width: 80%;
 }
 
 /* Search Bar */
@@ -63,9 +76,7 @@ h1 {
   width: 30%;
 }
 
-.donation-header { 
-  display: flex;
-}
+
 
 path { 
   fill: #8B5CF6;

@@ -7,6 +7,7 @@ import { create } from '@web3-storage/w3up-client';
 import LandingPage from "./components/LandingPage";
 import DonationCard from "./components/DonationCard";
 import RequestForm from "./components/RequestForm";
+import Aurora from "@/components/ui/Aurora";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RequestDetails from "./RequestDetails"
 
@@ -116,12 +117,6 @@ const CharityApp = () => {
   };
 
   // Filtered requests
-  const filteredRequests = requests
-    .filter(r => 
-      inputText ? r.description.toLowerCase().includes(inputText) : true
-    )
-    .filter(r => !r.fulfilled);
-
   return (
     <Router>
   <Routes>
@@ -135,6 +130,12 @@ const CharityApp = () => {
           />
         ) : (
           <div className="relative min-h-screen">
+            <Aurora
+              colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+              blend={0.5}
+              amplitude={1.0}
+              speed={0.5}
+            />
             {/* Search Header */}
             <div className="p-4 max-w-xl mx-auto">
               <h1 className="text-2xl font-bold mb-4 text-white text-center">
@@ -152,21 +153,25 @@ const CharityApp = () => {
                     "&:hover fieldset": { borderColor: "#F6CEFC" },
                     "&.Mui-focused fieldset": { borderColor: "#BF77F6" }
                   },
-                  "& .MuiInputLabel-root": { color: "white" }
+                  "& .MuiInputLabel-root": { color: "white","&.Mui-focused fieldset": { borderColor: "#BF77F6"}}
                 }}
               />
             </div>
 
             {/* Donation Grid */}
             <div className="flex flex-wrap justify-center px-6 py-6 gap-4">
-              {filteredRequests.map((request, index) => (
-                <DonationCard
-                  key={index}
-                  request={request}
-                  index={index}
-                  handleDonate={handleDonate}
-                  showShare={true}
-                />
+              {requests
+                .map((r, i) => ({ request: r, index: i })) // preserve original index
+                .filter(({ request }) => !request.fulfilled) // filter out fulfilled ones
+                .filter(({ request }) => inputText ? request.description.toLowerCase().includes(inputText) : true) // search filter
+                .map(({ request, index }) => (
+                  <DonationCard
+                    key={index}
+                    request={request}
+                    index={index}
+                    handleDonate={handleDonate}
+                    showShare={true}
+                  />
               ))}
             </div>
 
