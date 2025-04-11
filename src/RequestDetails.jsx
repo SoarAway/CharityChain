@@ -92,11 +92,10 @@ export default function RequestDetails() {
     speed={0.5}
   />
     <div className="max-w-2xl mx-auto mt-10 px-4">
-    <h1 className="text-2xl font-bold mb-4 text-white text-center cursor-pointer" onClick={() => navigate("/")}>
+    <h1 className="text-5xl font-bold mb-4 text-white text-center cursor-pointer" onClick={() => navigate("/")}>
       Charity Chain
     </h1>
-  <DonationCard request={request} index={id} handleDonate={handleDonate} showShare={true} />
-
+      <DonationCard request={request} index={id} handleDonate={handleDonate} showShare={true} />
 </div>
     </div>
 

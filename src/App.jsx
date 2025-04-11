@@ -138,7 +138,7 @@ const CharityApp = () => {
             />
             {/* Search Header */}
             <div className="p-4 max-w-xl mx-auto">
-              <h1 className="text-2xl font-bold mb-4 text-white text-center">
+              <h1 className="text-5xl font-bold mb-4 text-white text-center">
                 Charity Chain
               </h1>
               <TextField
@@ -188,11 +188,14 @@ const CharityApp = () => {
             <Button
               onClick={() => setIsCreatingPost(true)}
               variant="outline"
-              size="icon"
-              className="fixed bottom-10 right-10 bg-black text-white hover:bg-white hover:text-black"
+              className="fixed bottom-10 right-10 bg-purple-500 text-white hover:bg-purple-600 flex items-center overflow-hidden transition-all duration-300 ease-in-out w-12 hover:w-56 h-12 rounded-xl group px-4"
             >
-              +
+              <span className="text-xl">+</span>
+              <span className="ml-2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Request for donation
+              </span>
             </Button>
+
 
             {/* Request Form Modal */}
             {isCreatingPost && (
