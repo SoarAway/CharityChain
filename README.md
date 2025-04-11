@@ -1,13 +1,28 @@
 # Charity Chain
 
-A charity website designed to help any person in need with web3 technology. This project supports donation through cryptocurrency and leverages transparency and simplicity, encouraging more donors.
+A decentralized charity platform powered by Web3 technology. Charity Chain enables anyone to donate or request aid transparently using cryptocurrency.
+This project aims to simplify giving, especially for people who are new to blockchain or have limited tech skills—including the elderly.
 
-Aim: To build a user-friendly website that allows anyone including the elderly with lack of knowledge in technology to make donations online.
+Aim to build a user-friendly charity website where anyone can:
+1. Donate in just one click using crypto wallets like MetaMask.
+2. Request help directly on-chain.
+3. Track donations transparently using blockchain data.
 
 Key Features:
-1. Linking with crypto wallets such as MetaMask.
-2. Donation through cryptocurrency with 1 button.
-3. Request for donations instantly.
+1. Connect with crypto wallets like MetaMask.
+2. Donate cryptocurrency instantly with a simple UI.
+3. Submit aid requests instantly with files upload (stored on IPFS via Web3.Storage).
+4. Transparent donation tracking and progress per request.
+5. IPFS-powered decentralized storage for secure, permanent request files.
 
 Pre-requisites require:
-1. Crypto wallet.
+1. Crypto wallet (e.g. MetaMask)
+2. ETH on a supported network (e.g. Sepolia Testnet)
+3. Internet connection and browser
+
+Future Enhancements:
+1. AI filtering for scam prevention
+2. Multi-chain support
+3. Currency converter
+
+Run/installation guide:
