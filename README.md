@@ -28,8 +28,8 @@ This project aims to simplify giving, especially for people who are new to block
 
 ## Run/installation guide:
 1. Install Node.js
-2. Install MetaMask crypto wallet and create an account
-3. Enable Sepolia Testnet in MetaMask
+2. Install MetaMask (or other crpyto wallet) and create an account
+3. Enable Sepolia Testnet in MetaMask (or other crpyto wallet)
 4. Get SepoliaETH from https://cloud.google.com/application/web3/faucet/ethereum/sepolia
 5. Open the folder
 6. Type "npm install" in terminal without the quotation marks to install every dependency
