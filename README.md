@@ -35,3 +35,13 @@ This project aims to simplify giving, especially for people who are new to block
 6. Type "npm install" in the terminal without the quotation marks to install every dependency
 7. Type "npm run dev" in the terminal without the quotation marks to run the web application
 8. Connect the MetaMask wallet when prompted
+
+## Link to Slides : 
+https://www.canva.com/design/DAGkUW4KX6c/DqbK7iZUQEVnd4ekcqFVVw/view?utm_content=DAGkUW4KX6c&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hee56ed9362 
+
+## Contributors : 
+1. Loo Tan Yu Xian
+2. Ashley Chan Li Ling
+3. Lam Yun Han
+4. Lee Zhi Wei
+5. Liew Yu En
