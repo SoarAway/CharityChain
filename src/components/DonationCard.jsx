@@ -59,7 +59,7 @@ export default function DonationCard({ request, index, handleDonate, showShare =
           <div className= 'text-muted-foreground font-bold text-right'>{progress} %</div>
         </div>
 
-      <div className="descriptionBox mb-4 text-sm text-gray-600 dark:text-gray-300" onClick={() => navigate(`/request/${index}`)}>
+      <div className="text-justify descriptionBox mb-4 text-sm text-gray-600 dark:text-gray-300" onClick={() => navigate(`/request/${index}`)}>
         {request.description}
       </div>
 
