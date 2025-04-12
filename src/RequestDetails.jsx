@@ -8,40 +8,17 @@ import Alert from "./components/Alert"
 
 const contractAddress = "0xB743744472c8061B7a9422e13f5c822216c9Df9c";
 
-export default function RequestDetails() {
+export default function RequestDetails({ provider, account, contract }) {
   const { id } = useParams();
   const [request, setRequest] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [contract, setContract] = useState(null);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [showFailedDialog, setShowFailedDialog] = useState(false);
   const [showMetaMaskError, setShowMetaMaskError] = useState(false);
   const [showInvalidAmountError, setShowInvalidAmountError] = useState(false);
+  const [showInsufficientFundsError, setShowInsufficientFundsError] = useState(false);
   const navigate = useNavigate();
 
-  // Initialize contract from MetaMask
-  useEffect(() => {
-    const init = async () => {
-      try {
-        if (!window.ethereum) {
-          setShowMetaMaskError(true);
-          return;
-        }
-
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        await provider.send("eth_requestAccounts", []);
-        const signer = provider.getSigner();
-        const contractInstance = new ethers.Contract(contractAddress, contractABI, signer);
-        setContract(contractInstance);
-      } catch (err) {
-        console.error("Failed to connect wallet:", err);
-      }
-    };
-
-    init();
-  }, []);
-
-  // Fetch the request details from contract
   useEffect(() => {
     const fetchRequest = async () => {
       if (!contract) return;
@@ -66,23 +43,36 @@ export default function RequestDetails() {
   }, [contract, id]);
 
   // Donate function
-  const handleDonate = async (requestId, amount) => {
-    if (!amount || isNaN(amount)) {
-      setShowInvalidAmountError(true);
-      return;
+  const handleDonate = async (id, amountEth) => {
+    if (!amountEth || parseFloat(amountEth) <= 0) {
+      return setShowInvalidAmountError(true);
     }
   
+    const amountInWei = ethers.utils.parseEther(amountEth);
+  
     try {
-      const tx = await contract.donate(requestId, {
-        value: ethers.utils.parseEther(amount),
-      });
+      const balance = await provider.getBalance(account);
+  
+      if (balance.lt(amountInWei)) {
+        return setShowInsufficientFundsError(true);
+      }
+  
+      const tx = await contract.donate(id, { value: amountInWei });
       await tx.wait();
+  
       setShowSuccessDialog(true);
-    } catch (error) {
-      console.error("Donation failed:", error);
+  
+      // Wait 2 seconds, then reload
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      
+    } catch (err) {
+      console.error("Transaction failed:", err);
       setShowFailedDialog(true);
     }
   };
+  
   
 
   if (loading) return <div className="text-center p-10 text-lg">Loading request...</div>;
@@ -102,6 +92,12 @@ export default function RequestDetails() {
       </h1>
         <DonationCard request={request} index={id} handleDonate={handleDonate} showShare={true} />
     </div>
+      <Alert
+        open={showInsufficientFundsError}
+        onClose={() => setShowInsufficientFundsError(false)}
+        title="Insufficient Funds"
+        description="You do not have enough ETH in your wallet to complete this transaction."
+      />
       <Alert
           open={showSuccessDialog}
           onClose={() => setShowSuccessDialog(false)}
