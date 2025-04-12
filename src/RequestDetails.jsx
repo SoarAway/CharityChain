@@ -6,8 +6,6 @@ import { contractABI } from "./abi";
 import Aurora from "@/components/ui/Aurora";
 import Alert from "./components/Alert"
 
-const contractAddress = "0xB743744472c8061B7a9422e13f5c822216c9Df9c";
-
 export default function RequestDetails({ provider, account, contract }) {
   const { id } = useParams();
   const [request, setRequest] = useState(null);
