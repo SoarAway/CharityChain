@@ -77,7 +77,7 @@ export default function RequestDetails({ provider, account, contract }) {
   if (!request) return <div className="text-center p-10 text-red-500">Request not found.</div>;
 
   return (
-    <div>
+    <div className="requestDetailsPage">
       <Aurora
         colorStops={["#2962FF", "#9633FF", "#FF94B4"]}
         blend={0.5}

@@ -31,7 +31,7 @@ export default function DonationCard({ request, index, handleDonate, showShare =
           title="Link has been copied!"
           description="You can now share it to friends on social media."
         />
-    <Card className='donation-card object-cover w-full'>
+    <Card className='donation-card object-cover overflow-hidden  w-full'>
       <CardHeader className='donation-header'>
         <div onClick={() => navigate(`/request/${index}`)}>
           <h3 className="text-4xl font-bold">{request.title}</h3>

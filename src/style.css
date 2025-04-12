@@ -42,7 +42,7 @@ h1{
 }
 
 .card-spotlight { 
-  min-width: 520px;
+  max-width: 500px;
 }
 
 .donation-card{
@@ -54,6 +54,10 @@ h1{
 .donation-header { 
   display: flex;
   justify-content: space-between;
+}
+
+.requestDetailsPage .card-spotlight { 
+  min-width: 630px;
 }
 
 .donation-header div { 
