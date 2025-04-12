@@ -4,6 +4,7 @@ import { AnimatedContent } from "@/components/ui/AnimatedContent";
 import { FileUpload } from "@/components/ui/file-upload";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
+import Alert from "./Alert"
 
 export default function RequestForm({
   newRequestTitle,
@@ -20,9 +21,16 @@ export default function RequestForm({
 }) {
 
   const [uploading, setUploading] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
 
   return (
     <div className="create-post-overlay fixed inset-0 bg-black/50 flex items-center justify-center">
+      <Alert
+        open={showDialog}
+        onClose={() => setShowDialog(false)}
+        title="File upload failed!"
+        description="Please try again."
+      />
       <AnimatedContent
         distance={150}
         direction="vertical"
@@ -51,7 +59,7 @@ export default function RequestForm({
                     setCid(cid.toString());
                   } catch (error) {
                     console.error("Upload failed:", error);
-                    alert("File upload failed");
+                    setShowDialog(true);
                   } finally {
                     setUploading(false); // Stop animation
                   }
