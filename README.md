@@ -31,7 +31,7 @@ This project aims to simplify giving, especially for people who are new to block
 1. Install [Node.js](https://nodejs.org/en/download)
 2. Install [MetaMask](https://metamask.io/en-GB/download) (or other crypto wallet) and create an account
 3. Enable Sepolia Testnet in MetaMask (or other crypto wallet)
-4. Get [SepoliaETH](https://cloud.google.com/application/web3/faucet/ethereum/sepolia)
+4. Get [SepoliaETH](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) with your wallet address
 5. Cloning the repository
 ``` bash
 # Getting the folder from github 
