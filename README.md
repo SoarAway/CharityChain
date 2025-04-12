@@ -32,10 +32,21 @@ This project aims to simplify giving, especially for people who are new to block
 2. Install [MetaMask](https://metamask.io/en-GB/download) (or other crypto wallet) and create an account
 3. Enable Sepolia Testnet in MetaMask (or other crypto wallet)
 4. Get SepoliaETH from [](https://cloud.google.com/application/web3/faucet/ethereum/sepolia)
-5. Open the folder
-6. Install dependencies using `npm install`
-7. Run the web application using `npm run dev`
-8. Connect the MetaMask wallet when prompted
+5. Cloning the repository
+```python
+// Getting the folder from github 
+git clone https://github.com/SoarAway/CharityChain.git myproject
+
+// Change directory 
+cd myproject
+
+// Install NPM dependancies
+npm install
+
+// Start the application
+npm run dev
+```
+6. Connect the MetaMask wallet when prompted
 
 # Other Materials
 ## Link to Slides
