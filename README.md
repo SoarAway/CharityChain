@@ -33,8 +33,8 @@ This project aims to simplify giving, especially for people who are new to block
 3. Enable Sepolia Testnet in MetaMask (or other crypto wallet)
 4. Get SepoliaETH from [](https://cloud.google.com/application/web3/faucet/ethereum/sepolia)
 5. Open the folder
-6. Type "npm install" in the terminal without the quotation marks to install every dependency
-7. Type "npm run dev" in the terminal without the quotation marks to run the web application
+6. Install dependencies using `npm install`
+7. Run the web application using `npm run dev`
 8. Connect the MetaMask wallet when prompted
 
 # Other Materials
