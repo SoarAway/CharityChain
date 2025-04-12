@@ -52,7 +52,7 @@ npm run dev
 ## Link to Slides
 https://www.canva.com/design/DAGkUW4KX6c/DqbK7iZUQEVnd4ekcqFVVw/view?utm_content=DAGkUW4KX6c&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hee56ed9362
 
-##Link to Contract Address on Etherscan
+## Link to Contract Address on Etherscan
 https://sepolia.etherscan.io/address/0xB743744472c8061B7a9422e13f5c822216c9Df9c
 
 ## Contributors
