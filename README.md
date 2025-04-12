@@ -34,16 +34,16 @@ This project aims to simplify giving, especially for people who are new to block
 4. Get SepoliaETH from [](https://cloud.google.com/application/web3/faucet/ethereum/sepolia)
 5. Cloning the repository
 ```
-// Getting the folder from github 
+# Getting the folder from github 
 git clone https://github.com/SoarAway/CharityChain.git myproject
 
-// Change directory 
+# Change directory 
 cd myproject
 
-// Install NPM dependancies
+# Install NPM dependancies
 npm install
 
-// Start the application
+# Start the application
 npm run dev
 ```
 6. Connect the MetaMask wallet when prompted
