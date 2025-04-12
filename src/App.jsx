@@ -37,6 +37,8 @@ const CharityApp = () => {
   const [showInvalidAmountError, setShowInvalidAmountError] = useState(false);
   const [showMissingFieldError, setShowMissingFieldError] = useState(false);
   const [showTransactionFailedError, setShowTransactionFailedError] = useState(false);
+  const [showInsufficientFundsError, setShowInsufficientFundsError] = useState(false);
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
   // Web3.Storage initialization
   useEffect(() => {
@@ -85,11 +87,34 @@ const CharityApp = () => {
 
   // Core functionality
   const handleDonate = async (id, amountEth) => {
-    if (!amountEth || parseFloat(amountEth) <= 0) return setShowInvalidAmountError(true);
-    const tx = await contract.donate(id, { value: ethers.utils.parseEther(amountEth) });
-    await tx.wait();
-    window.location.reload();
-  };
+    if (!amountEth || parseFloat(amountEth) <= 0) {
+      return setShowInvalidAmountError(true);
+    }
+  
+    const amountInWei = ethers.utils.parseEther(amountEth);
+  
+    try {
+      const balance = await provider.getBalance(account);
+  
+      if (balance.lt(amountInWei)) {
+        return setShowInsufficientFundsError(true);
+      }
+  
+      const tx = await contract.donate(id, { value: amountInWei });
+      await tx.wait();
+  
+      setShowSuccessAlert(true);
+  
+      // Wait 2 seconds, then reload
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      
+    } catch (err) {
+      console.error("Transaction failed:", err);
+      setShowTransactionFailedError(true);
+    }
+  }; 
 
   const handleRequestFunds = async () => {
     if (!newRequestAmount || !newRequestDesc || !cid) return setShowMissingFieldError(true);
@@ -180,6 +205,18 @@ const CharityApp = () => {
               </div>
             </div>
             <Alert
+              open={showInsufficientFundsError}
+              onClose={() => setShowInsufficientFundsError(false)}
+              title="Insufficient Funds"
+              description="You do not have enough ETH in your wallet to complete this transaction."
+            />
+            <Alert
+              open={showSuccessAlert}
+              onClose={() => setShowSuccessAlert(false)}
+              title="Donation Successful!"
+              description="Your donation has been sent. Thank you for your contribution!"
+            />
+            <Alert
               open={showMetaMaskError}
               onClose={() => setShowMetaMaskError(false)}
               title="MetaMask not found!"
@@ -258,7 +295,14 @@ const CharityApp = () => {
         )
       }
     />
-    <Route path="/request/:id" element={<RequestDetails />} />
+    <Route path="/request/:id" element={
+      <RequestDetails 
+      provider={provider} 
+      account={account} 
+      contract={contract} 
+      />
+    }
+    />
   </Routes>
 </Router>
 
