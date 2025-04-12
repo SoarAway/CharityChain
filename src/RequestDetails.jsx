@@ -4,17 +4,7 @@ import { ethers } from "ethers";
 import DonationCard from "./components/DonationCard";
 import { contractABI } from "./abi";
 import Aurora from "@/components/ui/Aurora";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+import Alert from "./components/Alert"
 
 const contractAddress = "0xB743744472c8061B7a9422e13f5c822216c9Df9c";
 
@@ -25,6 +15,8 @@ export default function RequestDetails() {
   const [contract, setContract] = useState(null);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [showFailedDialog, setShowFailedDialog] = useState(false);
+  const [showMetaMaskError, setShowMetaMaskError] = useState(false);
+  const [showInvalidAmountError, setShowInvalidAmountError] = useState(false);
   const navigate = useNavigate();
 
   // Initialize contract from MetaMask
@@ -32,7 +24,7 @@ export default function RequestDetails() {
     const init = async () => {
       try {
         if (!window.ethereum) {
-          alert("Please install MetaMask.");
+          setShowMetaMaskError(true);
           return;
         }
 
@@ -76,7 +68,7 @@ export default function RequestDetails() {
   // Donate function
   const handleDonate = async (requestId, amount) => {
     if (!amount || isNaN(amount)) {
-      alert("Please enter a valid amount");
+      setShowInvalidAmountError(true);
       return;
     }
   
@@ -98,47 +90,42 @@ export default function RequestDetails() {
 
   return (
     <div>
-    <Aurora
-    colorStops={["#2962FF", "#9633FF", "#FF94B4"]}
-    blend={0.5}
-    amplitude={1.0}
-    speed={0.5}
-  />
-    <div className="max-w-2xl mx-auto mt-10 px-4">
-    <h1 className="text-5xl font-bold mb-4 text-white text-center cursor-pointer" onClick={() => navigate("/")}>
-      Charity Chain
-    </h1>
-      <DonationCard request={request} index={id} handleDonate={handleDonate} showShare={true} />
-</div>
-
-<AlertDialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
-  <AlertDialogContent className="bg-[#141212] text-white">
-    <AlertDialogHeader>
-      <AlertDialogTitle>Donation Successful!</AlertDialogTitle>
-      <AlertDialogDescription>
-        Funds were successfully transferred to the beneficiary.
-      </AlertDialogDescription>
-    </AlertDialogHeader>
-    <AlertDialogFooter>
-      <AlertDialogAction onClick={() => setShowSuccessDialog(false)}>OK</AlertDialogAction>
-    </AlertDialogFooter>
-  </AlertDialogContent>
-</AlertDialog>
-
-<AlertDialog open={showFailedDialog} onOpenChange={setShowFailedDialog}>
-  <AlertDialogContent className="bg-[#141212] text-white">
-    <AlertDialogHeader>
-      <AlertDialogTitle>Donation Failed</AlertDialogTitle>
-      <AlertDialogDescription>
-        Transaction could not be completed. Please try again.
-      </AlertDialogDescription>
-    </AlertDialogHeader>
-    <AlertDialogFooter>
-      <AlertDialogAction onClick={() => setShowFailedDialog(false)}>OK</AlertDialogAction>
-    </AlertDialogFooter>
-  </AlertDialogContent>
-</AlertDialog>
-
+      <Aurora
+        colorStops={["#2962FF", "#9633FF", "#FF94B4"]}
+        blend={0.5}
+        amplitude={1.0}
+        speed={0.5}
+      />
+      <div className="max-w-2xl mx-auto mt-10 px-4">
+      <h1 className="text-5xl font-bold mb-4 text-white text-center cursor-pointer" onClick={() => navigate("/")}>
+        Charity Chain
+      </h1>
+        <DonationCard request={request} index={id} handleDonate={handleDonate} showShare={true} />
+    </div>
+      <Alert
+          open={showSuccessDialog}
+          onClose={() => setShowSuccessDialog(false)}
+          title="Transaction is successful!"
+          description="Page is reloading."
+        />
+      <Alert
+          open={showFailedDialog}
+          onClose={() => setShowFailedDialog(false)}
+          title="Transaction failed!"
+          description="Something went wrong. Please try again."
+        />
+        <Alert
+          open={showMetaMaskError}
+          onClose={() => setShowMetaMaskError(false)}
+          title="MetaMask not found!"
+          description="Please install Metamask extension."
+        />
+        <Alert
+          open={showInvalidAmountError}
+          onClose={() => setShowInvalidAmountError(false)}
+          title="Invalid amount!"
+          description="Please enter a value greater than 0."
+        />
     </div>
 
 

@@ -11,6 +11,7 @@ import Aurora from "@/components/ui/Aurora";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RequestDetails from "./RequestDetails"
 import TrueFocus from '@/components/ui/TrueFocus';
+import Alert from "./components/Alert"
 
 const contractAddress = "0xB743744472c8061B7a9422e13f5c822216c9Df9c";
 
@@ -32,6 +33,10 @@ const CharityApp = () => {
   const [isCreatingPost, setIsCreatingPost] = useState(false);
   const [cid, setCid] = useState(null);
   const [w3client, setW3Client] = useState(null);
+  const [showMetaMaskError, setShowMetaMaskError] = useState(false);
+  const [showInvalidAmountError, setShowInvalidAmountError] = useState(false);
+  const [showMissingFieldError, setShowMissingFieldError] = useState(false);
+  const [showTransactionFailedError, setShowTransactionFailedError] = useState(false);
 
   // Web3.Storage initialization
   useEffect(() => {
@@ -61,7 +66,7 @@ const CharityApp = () => {
         setProvider(web3Provider);
         setContract(contractInstance);
       } else {
-        alert("Please install Metamask extension.");
+        setShowMetaMaskError(true);
       }
     };
     init();
@@ -80,14 +85,14 @@ const CharityApp = () => {
 
   // Core functionality
   const handleDonate = async (id, amountEth) => {
-    if (!amountEth || parseFloat(amountEth) <= 0) return alert("Invalid amount");
+    if (!amountEth || parseFloat(amountEth) <= 0) return setShowInvalidAmountError(true);
     const tx = await contract.donate(id, { value: ethers.utils.parseEther(amountEth) });
     await tx.wait();
     window.location.reload();
   };
 
   const handleRequestFunds = async () => {
-    if (!newRequestAmount || !newRequestDesc || !cid) return alert("Missing required fields");
+    if (!newRequestAmount || !newRequestDesc || !cid) return setShowMissingFieldError(true);
     try {
       const tx = await contract.requestFunds(
         ethers.utils.parseEther(newRequestAmount),
@@ -100,7 +105,7 @@ const CharityApp = () => {
       window.location.reload();
     } catch (err) {
       console.error("Transaction failed:", err);
-      alert("Transaction failed. Check console for details.");
+      setShowTransactionFailedError(true);
     }
   };
 
@@ -174,7 +179,31 @@ const CharityApp = () => {
               />
               </div>
             </div>
-
+            <Alert
+              open={showMetaMaskError}
+              onClose={() => setShowMetaMaskError(false)}
+              title="MetaMask not found!"
+              description="Please install Metamask extension."
+            />
+            <Alert
+              open={showInvalidAmountError}
+              onClose={() => setShowInvalidAmountError(false)}
+              title="Invalid amount!"
+              description="Please enter a value greater than 0."
+            />
+            <Alert
+              open={showMissingFieldError}
+              onClose={() => setShowMissingFieldError(false)}
+              title="Missing required Fields!"
+              description="Please fill in all the fields or wait for the picture to be uploaded."
+              className="z-50"
+            />
+            <Alert
+              open={showTransactionFailedError}
+              onClose={() => setShowTransactionFailedError(false)}
+              title="Transaction failed!"
+              description="Something went wrong. Please try again."
+            />
             {/* Donation Grid */}
             <div className="flex flex-wrap justify-center px-6 py-6 gap-4">
               {requests

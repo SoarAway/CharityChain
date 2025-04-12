@@ -6,17 +6,7 @@ import {Input} from "@/components/ui/Input";
 import {Card,CardContent,CardHeader} from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+import Alert from "./Alert"
 
 
 export default function DonationCard({ request, index, handleDonate, showShare = false }) {
@@ -35,9 +25,15 @@ export default function DonationCard({ request, index, handleDonate, showShare =
 
   return (
     <SpotlightCard>
+      <Alert
+          open={showDialog}
+          onClose={() => setShowDialog(false)}
+          title="Link has been copied!"
+          description="You can now share it to friends on social media."
+        />
     <Card className='donation-card'>
-      <CardHeader className='donation-header' onClick={() => navigate(`/request/${index}`)}>
-        <div>
+      <CardHeader className='donation-header'>
+        <div onClick={() => navigate(`/request/${index}`)}>
           <h3 className="text-4xl font-bold">{request.title}</h3>
           <span className="text-lg">{ethers.utils.formatEther(request.requestedAmount)} ETH</span>
         </div>
@@ -49,19 +45,6 @@ export default function DonationCard({ request, index, handleDonate, showShare =
               aria-label="Share"
             />
       )}
-      <AlertDialog open={showDialog} onOpenChange={setShowDialog}>
-        <AlertDialogContent className="bg-[#141212]">
-          <AlertDialogHeader>
-            <AlertDialogTitle>Link Copied!</AlertDialogTitle>
-            <AlertDialogDescription>
-              You can now share the donation request with others.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogAction onClick={() => setShowDialog(false)}>OK</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
       </CardHeader>
       <CardContent>
         <div className="space-y-2" onClick={() => navigate(`/request/${index}`)}>
