@@ -98,8 +98,8 @@ export default function RequestDetails() {
 
   return (
     <div>
-          <Aurora
-    colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+    <Aurora
+    colorStops={["#2962FF", "#9633FF", "#FF94B4"]}
     blend={0.5}
     amplitude={1.0}
     speed={0.5}

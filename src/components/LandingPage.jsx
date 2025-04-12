@@ -19,7 +19,7 @@ export default function LandingPage({ totalDonated, goToHome }) {
               <div className="flex flex-col items-center space-y-1">
                 <div className="flex items-baseline space-x-1 md:text-8xl font-bold">
                 <GradientText
-                  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                  colors={["#2962FF", "#9633FF", "#FF94B4"]}
                   animationSpeed={5}
                   showBorder={false}
                 >

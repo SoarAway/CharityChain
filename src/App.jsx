@@ -132,7 +132,7 @@ const CharityApp = () => {
         ) : (
           <div className="relative min-h-screen">
             <Aurora
-              colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+              colorStops={["#2962FF", "#9633FF", "#FF94B4"]}
               blend={0.5}
               amplitude={1.0}
               speed={0.5}
@@ -160,15 +160,15 @@ const CharityApp = () => {
                       borderColor: "white",
                     },
                     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#BF77F6",
+                      borderColor: "#8B5CF6",
                     },
                     "&:hover:not(.Mui-focused) .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#F6CEFC",
+                      borderColor: "#8B5CF6",
                     }
                   },
                   "& .MuiInputLabel-outlined": {
                     color: "white",
-                    "&.Mui-focused": { color: "#F6CEFC" }
+                    "&.Mui-focused": { color: "#8B5CF6" }
                   }
                 }}
               />
