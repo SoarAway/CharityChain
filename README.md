@@ -33,7 +33,7 @@ This project aims to simplify giving, especially for people who are new to block
 3. Enable Sepolia Testnet in MetaMask (or other crypto wallet)
 4. Get SepoliaETH from [](https://cloud.google.com/application/web3/faucet/ethereum/sepolia)
 5. Cloning the repository
-```python
+```
 // Getting the folder from github 
 git clone https://github.com/SoarAway/CharityChain.git myproject
 
