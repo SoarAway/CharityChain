@@ -66,3 +66,6 @@ https://sepolia.etherscan.io/address/0xB743744472c8061B7a9422e13f5c822216c9Df9c
 1. AI filtering for scam prevention
 2. Multi-chain support
 3. Currency converter
+
+# Contact Details
+Loo Tan Yu Xian dltyx04@gmail.com, or yuxian_7830 on Discord
