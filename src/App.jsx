@@ -138,7 +138,7 @@ const CharityApp = () => {
               speed={0.5}
             />
             {/* Search Header */}
-            <div className=" max-w-xl mx-auto">
+            <div className=" max-w-xl mx-auto trueFocusText">
             <TrueFocus 
               sentence="Charity Chain"
               manualMode={false}
