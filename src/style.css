@@ -41,6 +41,10 @@ h1{
   row-gap: 20px;
 }
 
+.card-spotlight { 
+  width: 520px;
+}
+
 .donation-card{
   min-width: 400px;
   justify-content: space-between;
